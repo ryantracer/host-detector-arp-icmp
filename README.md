@@ -1,9 +1,14 @@
-# detector-de-hosts-arp-icmp
+# host-detector-arp-icmp
 Um pequeno script de python que criei para praticar enquanto faço alguns estudos, projeto feito com fins educativos.
 
-# Como funciona
-O script usa a biblioteca netifaces para conseguir o endereço de IP do usuário dentro da interface de rede selecionada, convertendo a máscara de rede para o formato necessário para a notação CIDR (ex.: 255.255.255.0 => 24) (função get_local). A interface de rede deve ser fornecida pelo usuário.
+A small Python script that i made to practice some concepts that i've been studying, made for educational purposes, this is not a professional and fully functional tool.
 
-Através do resultado, a função net_scanner utilizará solicitações ARP para obter o IP e endereço MAC das máquinas que responderem, esse teste normalmente resultará na maior quantidade de respostas. Para obter um pouco mais, o programa enviará solicitações ICMP, normalmente trazendo menos resultados pois essas podem ser mais fácilmente bloqueadas, os resultados serão salvos em um host.txt criado automáticamente (o arquivo só será criado após o fim do processo, quando o usuário pressionar CTRL-C ou todos os IPs forem escaneados).
+# How it works
 
-É um projeto simples de estudos e feito para testes e aprender a lidar com redes, o código pode estar bagunçado e precisar ser refatorado futuramente.
+The script uses the netifaces library to get the user's ip address inside the selected interface (lo, wlo, eth0...),  converting the netmask to the necessary format for CIDR notation ip (conversion example: 255.255.255.0 => 24) (get_local function).
+
+With the result, the net_scanner function will obtain the ip and mac addresses of hosts in the network through ARP and ICMP requests. Most of the addresses will be obtained by arp, the rest will be added with ICMP. All of the results will be written in a txt file for the user to interpret the data and use it as they want.
+
+The process will only stop when the entire range of the network is tested or the user presses CTRL-C
+
+This is a simple practice project made for testing and learning about networking, the code may be messy and can be refactored as needed.
