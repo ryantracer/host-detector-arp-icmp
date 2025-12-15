@@ -1,5 +1,4 @@
 # host-detector-arp-icmp
-Um pequeno script de python que criei para praticar enquanto faço alguns estudos, projeto feito com fins educativos.
 
 A small Python script that i made to practice some concepts that i've been studying, made for educational purposes, this is not a professional and fully functional tool.
 
