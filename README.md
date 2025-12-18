@@ -11,3 +11,10 @@ With the result, the net_scanner function will obtain the ip and mac addresses o
 The process will only stop when the entire range of the network is tested or the user presses CTRL-C
 
 This is a simple practice project made for testing and learning about networking, the code may be messy and can be refactored as needed.
+
+# Requirements
+
+Scapy 
+Netifaces
+Netaddr
+IpAddress
