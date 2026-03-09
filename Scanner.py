@@ -14,16 +14,13 @@ parse.add_argument('-i', '--interface', help='Interfaces para escanear (eth0, en
 args = parse.parse_args()
 
 def get_local(interface):
-    # determinar o ip do usuário na rede
     try:
         ip = netifaces.ifaddresses(interface)[netifaces.AF_INET][0]['addr']
     except Exception as e:
         print(e)
 
-    # encontrar netmask
     netmask = netifaces.ifaddresses(interface)[netifaces.AF_INET][0]['netmask']
 
-    # converter para notação CIDR
     range = netaddr.IPAddress(netmask).netmask_bits()
     
     return f'{ip}/{range}'
@@ -37,10 +34,10 @@ def checksum_calc(data):
         word = (data[i] << 8) + data[i+1]
         checksum += word
 
-    checksum = (checksum >>16) + (checksum & 0xFFFF) # dobrar o carry
-    checksum += checksum >> 16 # dobrar novamente
+    checksum = (checksum >>16) + (checksum & 0xFFFF)
+    checksum += checksum >> 16 
 
-    return ~checksum & 0xFFFF # inversão de bits
+    return ~checksum & 0xFFFF 
 
 def net_scanner(ip, interface):
     print("CTRL-C para encerrar")
@@ -72,8 +69,8 @@ def net_scanner(ip, interface):
     
     for ip in net.hosts():
 
-        type = 8 # request
-        code = 0 # Echo
+        type = 8 
+        code = 0 
         checksum = 0
         id = os.getpid() & 0xFFFF
         sequence = 1
